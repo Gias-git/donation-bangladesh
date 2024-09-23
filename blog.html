@@ -1,45 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ</title>
 
-     <!-- DaiisyUI + TailwindCDN -->
+  <!-- DaiisyUI + TailwindCDN -->
 
-     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
-     <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
 
-  
 
-    <div class=" w-8/12 mx-auto mt-9">
-        <h1 class="font-bold text-4xl text-center mb-7">FAQ</h1>
-        <div class="join join-vertical w-full">
-            <div class="collapse collapse-arrow join-item border-base-300 border">
-              <input type="radio" name="my-accordion-4" checked="checked" />
-              <div class="collapse-title text-xl font-medium">Click to open this one and close others</div>
-              <div class="collapse-content">
-                <p>hello</p>
-              </div>
-            </div>
-            <div class="collapse collapse-arrow join-item border-base-300 border">
-              <input type="radio" name="my-accordion-4" />
-              <div class="collapse-title text-xl font-medium">Click to open this one and close others</div>
-              <div class="collapse-content">
-                <p>hello</p>
-              </div>
-            </div>
-            <div class="collapse collapse-arrow join-item border-base-300 border">
-              <input type="radio" name="my-accordion-4" />
-              <div class="collapse-title text-xl font-medium">Click to open this one and close others</div>
-              <div class="collapse-content">
-                <p>hello</p>
-              </div>
-            </div>
-          </div>
+
+  <div class=" w-11/12 md:w-8/12 mx-auto mt-9 space-y-7">
+    <h1 class="font-bold text-4xl text-center mb-7">FAQ</h1>
+    <div class="collapse collapse-plus bg-base-200">
+      <input type="radio" name="my-accordion-3" checked="checked" />
+      <div class="collapse-title text-xl font-medium">How can you find the parent or children of an element?</div>
+      <div class="collapse-content">
+        <p>element.parentElement: Gets the parent element. <br>
+          element.children: Returns a live HTMLCollection of an element's child elements. <br>
+          element.firstChild / element.lastChild: Get the first/last child node of the element.</p>
+      </div>
     </div>
-   
+    <div class="collapse collapse-plus bg-base-200">
+      <input type="radio" name="my-accordion-3" />
+      <div class="collapse-title text-xl font-medium">What is the difference between innerHTML and textContent?</div>
+      <div class="collapse-content">
+        <p>innerHTML returns or sets the HTML content of an element, including any HTML tags. <br>
+          textContent returns or sets only the text within an element, ignoring any HTML tags.</p>
+      </div>
+    </div>
+
+    <div class="collapse collapse-plus bg-base-200">
+      <input type="radio" name="my-accordion-3" />
+      <div class="collapse-title text-xl font-medium">What are DOM nodes and elements?</div>
+      <div class="collapse-content">
+        <p>A DOM node represents any object in the DOM tree <br>
+          A DOM element is a specific type of node representing an HTML element.</p>
+      </div>
+    </div>
+
+    <div class="collapse collapse-plus bg-base-200">
+      <input type="radio" name="my-accordion-3" />
+      <div class="collapse-title text-xl font-medium">How can you stop event propagation?</div>
+      <div class="collapse-content">
+        <p>stop event propagation by using the stopPropagation() method. This prevents the event from bubbling up to
+          parent elements.</p>
+      </div>
+    </div>
+  </div>
+
 </body>
+
 </html>

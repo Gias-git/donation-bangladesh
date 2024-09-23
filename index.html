@@ -40,19 +40,19 @@
 
     <!-- Header Section -->
 
-    <header>
+    <header class="sticky top-0 backdrop-blur-md">
 
         <nav class=" flex justify-around items-center py-3 bg-[rgb(249,247,243)] px-4">
 
             <!-- blog button -->
-            <div class="hidden md:block"><button id="blog-btn"
-                    class="font-bold text-xl bg-primaryColor px-8 py-3 rounded-lg">Blog</button></div>
+            <div><button id="blog-btn"
+                    class="font-bold text-xl bg-primaryColor py-3 px-2  md:px-8 md:py-3 rounded-lg">Blog</button></div>
 
             <!-- logo container -->
 
             <div class="flex items-center gap-2 md:gap-5">
                 <img src="assets/logo.png" alt="">
-                <h3 class="font-bold text-lg md:text-xl ">Donation Bangladesh</h3>
+                <h3 class="font-bold text-lg md:text-xl hidden md:block">Donation Bangladesh</h3>
             </div>
             <!-- Account Balance -->
             <div class="flex items-center gap-2 md:gap-4">
@@ -111,7 +111,7 @@
                         <input id="donateForNoakhaliInput" class=" border-gray-400 border-2 px-3 py-3 rounded-lg w-full"
                             type="number" placeholder="Write Donation Amount">
 
-                        <p id="error-msg" class="text-red-600 text-sm hidden">Please Enter Positive number</p>
+                        <p id="error-msg-Noakali-input" class="text-red-600 text-sm hidden">Please Enter Positive number</p>
                     </div>
 
                     <button id="donateForNoakhaliBtn" 
@@ -161,7 +161,7 @@
                         <input id="donateForFeniInput" class=" border-gray-400 border-2 px-3 py-3 rounded-lg w-full" type="text"
                             placeholder="Write Donation Amount">
 
-                        <p id="error-msg-feni" class="text-red-600 text-sm hidden">Please Enter Positive number</p>
+                        <p id="error-msg-feni-input" class="text-red-600 text-sm hidden">Please Enter Positive number</p>
                     </div>
 
                     <button id="donateForFeniBtn" 
@@ -194,7 +194,7 @@
                     <div class="mb-2 mt-3">
                         <input id="donateForQuotaInput" class=" border-gray-400 border-2 px-3 py-3 rounded-lg w-full" type="text"
                             placeholder="Write Donation Amount">
-                        <p id="error-msg" class="text-red-600 text-sm hidden">Please Enter Positive number</p>
+                        <p id="error-msg-quota-input" class="text-red-600 text-sm hidden">Please Enter Positive number</p>
                     </div>
 
                     <button id="donateForQuotaBtn" 

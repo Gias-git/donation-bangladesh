@@ -1,25 +1,21 @@
 
+// Blog Button click event
 
+catchInnerHtmlById('blog-btn').addEventListener('click', function () {
+    window.location.href = './blog.html'
+})
 
 // live validation
 
 
-document.getElementById('donateForNoakhaliInput').addEventListener('input', function () {
-    const NoakhaliInputValue = parseFloat(document.getElementById('donateForNoakhaliInput').value);
-
-    if (NoakhaliInputValue < 0) {
-        return document.getElementById('error-msg').classList.remove('hidden');
-    } else {
-        return document.getElementById('error-msg').classList.add('hidden');
-    }
-})
+errorMsgShow('donateForNoakhaliInput', 'error-msg-Noakali-input');
+errorMsgShow('donateForFeniInput', 'error-msg-feni-input');
+errorMsgShow('donateForQuotaInput', 'error-msg-quota-input');
 
 
-// Blog Button click event
 
-catchInnerHtmlById('blog-btn').addEventListener('click',function(){
-    window.location.href = './blog.html'
-})
+
+
 
 
 // click event for noakhali donation
@@ -30,31 +26,36 @@ document.getElementById('donateForNoakhaliBtn')
         const mainAccountValue = catchInnerTextById('account-balannce');
         // validation
 
-        if (donationForNoakhali < 0) {
+        if (donationValue < 0) {
             return alert('Please Give Positive Number');
+        } else if (mainAccountValue < donationValue) {
+            return alert('You does not have sufficient balance in your account!!! ')
+        } else {
+            // calculation new balance
+            const newMainAccountValue = mainAccountValue - donationValue;
+            const newDonationForNoakhaliValue = donationForNoakhali + donationValue;
+
+            document.getElementById('noakhali-donation').innerText = `${newDonationForNoakhaliValue} BDT`;
+            document.getElementById('account-balannce').innerText = `${newMainAccountValue} BDT`;
+
+            // History Add
+
+            const historyContainer = catchInnerHtmlById('history-container');
+            const createDiv = document.createElement('div');
+            createDiv.innerHTML = ` <div class="border-2 p-8 mb-4 rounded-lg">
+         <h1 class="font-bold">${donationValue} Taka is Donated for famine-2024 at Noakhali, Bangladesh</h1>
+         <br>
+         <p>${new Date().toLocaleDateString()}     ${new Date().toLocaleTimeString()}</p>
+             </div>
+            `;
+            historyContainer.insertBefore(createDiv, historyContainer.firstChild);
+
+            catchInnerHtmlById('donateForNoakhaliInput').value = '';
+            my_modal_3.showModal();
+
         }
 
-        // calculation new balance
-        const newMainAccountValue = mainAccountValue - donationValue;
-        const newDonationForNoakhaliValue = donationForNoakhali + donationValue;
 
-        document.getElementById('noakhali-donation').innerText = `${newDonationForNoakhaliValue} BDT`;
-        document.getElementById('account-balannce').innerText = `${newMainAccountValue} BDT`;
-
-        // History Add
-
-        const historyContainer = catchInnerHtmlById('history-container');
-        const createDiv = document.createElement('div');
-        createDiv.innerHTML = ` <div class="border-2 p-8 mb-4 rounded-lg">
-                <h1 class="font-bold">${donationValue} Taka is Donated for famine-2024 at Feni, Bangladesh</h1>
-                <br>
-                <p>${new Date().toLocaleDateString()}     ${new Date().toLocaleTimeString()}</p>
-            </div>
-        `;
-        historyContainer.insertBefore(createDiv, historyContainer.firstChild);
-
-        catchInnerHtmlById('donateForNoakhaliInput').value = '';
-        my_modal_3.showModal();
     })
 
 
@@ -69,6 +70,8 @@ document.getElementById('donateForFeniBtn')
 
         if (donationValueFeni < 0) {
             return alert('Please Give Positive Number');
+        } else if (mainAccountValue < donationValueFeni) {
+            return alert('You does not have sufficient balance in your account!!! ')
         }
 
         // calculation new balance
@@ -83,7 +86,7 @@ document.getElementById('donateForFeniBtn')
         const historyContainer = catchInnerHtmlById('history-container');
         const createDiv = document.createElement('div');
         createDiv.innerHTML = `<div class="border-2 p-8 mb-4 rounded-lg">
-                <h1 class="font-bold">${newDonationForfeni} Taka is Donated for famine-2024 at Feni, Bangladesh</h1>
+                <h1 class="font-bold">${newDonationForfeni} Taka is Donated for Injured in the Quota Movement</h1>
                 <br>
                 <p>${new Date().toLocaleDateString()}     ${new Date().toLocaleTimeString()}</p>
             </div>
@@ -104,8 +107,10 @@ document.getElementById('donateForQuotaBtn')
         const mainAccountValue = catchInnerTextById('account-balannce');
         // validation
 
-        if (donationValueFeni < 0) {
+        if (donationValueQuota < 0) {
             return alert('Please Give Positive Number');
+        } else if (mainAccountValue < donationValueQuota) {
+            return alert('You does not have sufficient balance in your account!!! ')
         }
 
         // calculation new balance
