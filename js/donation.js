@@ -1,4 +1,5 @@
 
+
 // Blog Button click event
 
 catchInnerHtmlById('blog-btn').addEventListener('click', function () {
@@ -17,20 +18,26 @@ errorMsgShow('donateForQuotaInput', 'error-msg-quota-input');
 
 
 
-
 // click event for noakhali donation
 document.getElementById('donateForNoakhaliBtn')
     .addEventListener('click', function () {
         const donationValue = getInputValue('donateForNoakhaliInput');
         const donationForNoakhali = catchInnerTextById('noakhali-donation');
         const mainAccountValue = catchInnerTextById('account-balannce');
+
+        console.log(donationValue);
+
+
         // validation
 
         if (donationValue < 0) {
             return alert('Please Give Positive Number');
         } else if (mainAccountValue < donationValue) {
             return alert('You does not have sufficient balance in your account!!! ')
-        } else {
+        } else if(isNaN(donationValue)){
+            return alert('Please Enter an amount')
+        }
+        else {
             // calculation new balance
             const newMainAccountValue = mainAccountValue - donationValue;
             const newDonationForNoakhaliValue = donationForNoakhali + donationValue;
@@ -72,6 +79,8 @@ document.getElementById('donateForFeniBtn')
             return alert('Please Give Positive Number');
         } else if (mainAccountValue < donationValueFeni) {
             return alert('You does not have sufficient balance in your account!!! ')
+        }else if(isNaN(donationValueFeni)){
+            return alert('Please Enter an amount')
         }
 
         // calculation new balance
@@ -111,29 +120,33 @@ document.getElementById('donateForQuotaBtn')
             return alert('Please Give Positive Number');
         } else if (mainAccountValue < donationValueQuota) {
             return alert('You does not have sufficient balance in your account!!! ')
+        }else if(isNaN(donationValueQuota)){
+            return alert('Please Enter an amount')
+        } else {
+            // calculation new balance
+            const newMainAccountValue = mainAccountValue - donationValueQuota;
+            const newDonationForQuota = donationForQuota + donationValueQuota;
+
+            document.getElementById('quota-donation').innerText = `${newDonationForQuota} BDT`;
+            document.getElementById('account-balannce').innerText = `${newMainAccountValue} BDT`;
+
+            // History Add
+
+            const historyContainer = catchInnerHtmlById('history-container');
+            const createDiv = document.createElement('div');
+            createDiv.innerHTML = `<div class="border-2 p-8 mb-4 rounded-lg">
+         <h1 class="font-bold">${newDonationForQuota} Taka is Donated for famine-2024 at Feni, Bangladesh</h1>
+         <br>
+         <p>${new Date().toLocaleDateString()}     ${new Date().toLocaleTimeString()}</p>
+     </div>
+ `;
+            historyContainer.insertBefore(createDiv, historyContainer.firstChild);
+
+            catchInnerHtmlById('donateForQuotaInput').value = '';
+            my_modal_3.showModal();
         }
 
-        // calculation new balance
-        const newMainAccountValue = mainAccountValue - donationValueQuota;
-        const newDonationForQuota = donationForQuota + donationValueQuota;
 
-        document.getElementById('quota-donation').innerText = `${newDonationForQuota} BDT`;
-        document.getElementById('account-balannce').innerText = `${newMainAccountValue} BDT`;
-
-        // History Add
-
-        const historyContainer = catchInnerHtmlById('history-container');
-        const createDiv = document.createElement('div');
-        createDiv.innerHTML = `<div class="border-2 p-8 mb-4 rounded-lg">
-                <h1 class="font-bold">${newDonationForQuota} Taka is Donated for famine-2024 at Feni, Bangladesh</h1>
-                <br>
-                <p>${new Date().toLocaleDateString()}     ${new Date().toLocaleTimeString()}</p>
-            </div>
-        `;
-        historyContainer.insertBefore(createDiv, historyContainer.firstChild);
-
-        catchInnerHtmlById('donateForQuotaInput').value = '';
-        my_modal_3.showModal();
     })
 
 
